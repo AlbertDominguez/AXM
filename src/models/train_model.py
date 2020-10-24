@@ -19,7 +19,7 @@ def read_and_split():
 
 def launch_training():
     trX, valX, trY, valY, colnames = read_and_split()
-    clf = RandomForestClassifier(n_estimators=500, max_depth=7, random_state=42)
+    clf = RandomForestClassifier(n_estimators=500, max_depth=8, random_state=42)
     clf.fit(trX, trY)
     print('Training confusion matrices:\n', confusion_matrix(trY, clf.predict(trX)))
     print('Validation confusion matrices:\n', confusion_matrix(valY, clf.predict(valX)))
