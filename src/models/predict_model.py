@@ -20,6 +20,7 @@ def load_model(model_name):
 def process_json(feat_obj):
     X = np.zeros((len(feat_obj), len(FEATURE_ORDER)))
     for idx in range(len(feat_obj)):
+        assert len(feat_obj[idx]) == len(FEATURE_ORDER)+1
         for i, feature in enumerate(FEATURE_ORDER):
             try:
                 X[idx][i] = feat_obj[idx][feature]
@@ -38,12 +39,12 @@ def predict(feat_obj, model_name):
     input_data = process_json(feat_obj)
     return clf.predict(input_data)
 
-def log_preds(preds):
+def log_preds(preds, feat_obj):
     for i, pred in enumerate(preds):
         if pred:
-            print('Entry number {} is predicted to be fault-inducing.'.format(i+1))
+            print('Commit {} is predicted to be fault-inducing.'.format(feat_obj[i]['commit_hash']))
         else:
-            print('Entry number {} is predicted not to be fault-inducing.'.format(i+1))
+            print('Commit {} is predicted not to be fault-inducing.'.format(feat_obj[i]['commit_hash']))
     return 0
 
 @click.command()
@@ -53,7 +54,7 @@ def main(input_filepath, model_name):
     with open(input_filepath, 'r') as fb:
         feat_obj = json.load(fb)
     pred = predict(feat_obj, model_name)
-    _ = log_preds(pred)
+    _ = log_preds(pred, feat_obj)
     return 0
 
 if __name__ == '__main__':
