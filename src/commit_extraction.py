@@ -74,6 +74,7 @@ def df_to_json(df, json_filename):
             lst[i][col] = df.iloc[i,j] if col != 'inMainBranch' else int(df.iloc[i, j])
     with open(json_filename, 'w') as fb:
         json.dump(lst, fb, cls=NpEncoder)
+    print('JSON file dumped to {} successfully!'.format(json_filename))
     return 0
     
 def main():
