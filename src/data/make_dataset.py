@@ -24,14 +24,14 @@ def pipeline(df):
 
 
 @click.command()
-#@click.argument('input_filepath', type=click.Path(exists=True))
 @click.argument('output_filepath', type=click.Path())
-def main(output_filepath, input_filepath='../../data/raw/technicalDebtDataset.db'):
+def main(output_filepath):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
+    input_filepath='../../data/raw/technicalDebtDataset.db'
     conn = sqlite3.connect(input_filepath) # connect to DB
     df = pd.read_sql('SELECT * FROM dataset', conn)
     df_ret = pipeline(df)
