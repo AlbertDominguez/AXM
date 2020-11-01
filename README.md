@@ -97,5 +97,3 @@ to generate a JSON file containing the features of the commits present in the re
 $ cd src/models && python predict_model.py [JSON_OUTPUT_PATH] random_forest && cd ../..
 ```
 which will display, in the standard output, whether every commit is fault-inducing or not.
-
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
