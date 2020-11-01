@@ -1,7 +1,7 @@
 Bug Hunter - AXM
 ==============================
 
-Repository which includes the work for the first part of TAED-2, a course included in the Data Science &amp; Engineering degree at UPC. The software includes pre-trained models and prediction scripts to predict whether a commit is potentially fault-inducing or not.
+Repository which includes the work for the first part of TAED-2, a course included in the Data Science &amp; Engineering degree at UPC. The software includes pre-trained models and prediction scripts to predict whether a commit is potentially fault-inducing or not, as well as the possibility to test it on real repositories using a simple CLI command.
 
 Project Organization
 ------------
